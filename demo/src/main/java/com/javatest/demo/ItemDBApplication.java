@@ -7,8 +7,12 @@ import java.util.Optional;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -84,6 +88,12 @@ class ItemController {
 		this.itemService = itemService;
 	}
 
+	@PostMapping("/add")
+	public ResponseEntity<Item> addItem(@RequestBody Item item) {
+		Item savedItem = itemService.saveItem(item);
+		return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
+	}
+
 
 
 
@@ -102,7 +112,11 @@ class ItemService {
 
 	public Optional<Item> getItem(Long id) {
 		return itemRepository.findById(id);
-	}	
+	}
+	
+	public Item saveItem(Item item) {
+		return itemRepository.save(item);
+	}
 
 }
 
