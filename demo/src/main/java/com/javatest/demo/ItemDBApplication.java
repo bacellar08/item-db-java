@@ -37,10 +37,10 @@ public class ItemDBApplication {
 class Item {
 	@Id
 	Long id;
-	String itemName;
+	String productName;
 	String description;
 	Double price;
-	Long stock;
+	Long quantity;
 
 
 	public Long getId() {
@@ -49,11 +49,11 @@ class Item {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getItemName() {
-		return itemName;
+	public String getproductName() {
+		return productName;
 	}
-	public void setItemName(String itemName) {
-		this.itemName = itemName;
+	public void setproductName(String productName) {
+		this.productName = productName;
 	}
 	public String getDescription() {
 		return description;
@@ -67,11 +67,11 @@ class Item {
 	public void setPrice(Double value) {
 		this.price = value;
 	}
-	public Long getStock() {
-		return stock;
+	public Long getQuantity() {
+		return quantity;
 	}
-	public void setStock(Long stock) {
-		this.stock = stock;
+	public void setQuantity(Long quantity) {
+		this.quantity = quantity;
 	}
 
 	
